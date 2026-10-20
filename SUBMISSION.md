@@ -1,6 +1,13 @@
 # HW4 — submission
 
 **AI assistance:** <!-- what you used, and for what. "None" is an answer too. -->
+ I used two AI tools:
+- **ChatGPT**: to explain Part A to me and to help me write my first draft of Part A (the steps, the tool definitions and the Q-09 walkthrough).
+- **Claude (claude.ai)**:
+  - to explain the assignment to me;
+  - to check my Part A draft for mistakes (it pointed out overlapping steps, an incorrect statement about NR-16 in A3, and missing details such as units and 365 days in a year); after that I corrected Part A myself and committed it before writing any `.py` file;
+  - to suggest starter code for `tools.py`, the tests, `strategies.py` and `run.py`, and to help me fix errors (the `reasoning_effort` error in S3 and the S2 voting);
+  - to help with Git and PowerShell commands.
 
 ---
 
@@ -327,27 +334,87 @@ The disadvantage is that the model may need several tool calls, increasing execu
 
 ### What I changed from Part A while coding
 
-<!-- what changed in your plan, and why. "None" is an answer too. -->
+Part A itself is unchanged. These are the differences between the plan and the code:
+
+1. **Three sentence templates, not two.** The 12 district profiles are written in three different sentence patterns (for example NR-01 "Founded in ... covers ...", NR-02 "has 14 schools, which enrolled ...", NR-03 "lies on ... and was founded in ..."). So `lookup` uses a list of regular expressions per field instead of one, and a test checks that every profile parses every field.
+2. **Fixed list of fields.** In A2 I listed the fields in the tool description. In the code they are a fixed dictionary (`FIELDS`), and an unknown field returns `field_not_found` together with the list of available fields, so the model can correct itself.
+3. **How corrections are applied.** In A1 I described step 5 in general terms. In the code the notice is parsed once from the corpus (a document whose title starts with "Correction"), and its value replaces the profile value. Right now only the `area_km2` pattern is implemented, because NR-16 is the only notice in the corpus. A different kind of notice would need a new pattern.
+4. **Ambiguous names.** `ambiguous_district` is returned when the input is a prefix of more than one district (for example "Oss" matches Ossbridge and Ossford). A misspelled name such as "Ossbrige" returns `district_not_found` with up to three suggestions and never picks a district by itself.
+5. **Answer precision in the prompt.** The model does not know how many decimals a question needs (the `decimals` field is not given to it). I added "at most 3 decimal places, no units, no thousands separators" to the shared answer-format rule, so that one parser can check all strategies.
+6. **Water unit.** The conversion of Lindenmoor's cubic metres to megalitres is done inside `lookup`, as planned, and the result carries a `note` with the original figure.
+7. **Region tariff.** `lookup("region", "water_tariff_2025")` reads NR-15. In A2 this was only mentioned in the description; the tests now cover it.
+8. **Round limit.** `MAX_ROUNDS = 10` for S3. Part A did not fix a number. Q-09 needs about 3 to 4 rounds, so 10 leaves margin and still stops a runaway loop.
+9. **Reasoning turned off.** The first S3 test failed with `Function tools with reasoning_effort are not supported for gpt-5.6-luna in /v1/chat/completions`. I set `reasoning_effort="none"` for all three strategies so that they stay comparable.
+10. **S2 voting changed.** In my first version the five answers were voted on as exact (name, number) pairs. In a test on Q-09 the five numbers were all different, so the vote did nothing. Now I vote on the name and take the median number of the winning name.
 
 ### B2 — Tests
 
 ```text
-<!-- pytest output -->
+(.venv) PS C:\Users\Asus\magzhanzhidekhan-hw4> python -m pytest -v
+======================================================== test session starts =========================================================
+platform win32 -- Python 3.12.1, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\Asus\magzhanzhidekhan-hw4\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Asus\magzhanzhidekhan-hw4
+plugins: anyio-4.15.1
+collected 28 items                                                                                                                    
+
+tests/test_tools.py::test_lookup_correct_2025_number PASSED                                                                     [  3%]
+tests/test_tools.py::test_lookup_misspelled_name_gives_suggestion_not_a_guess PASSED                                            [  7%]
+tests/test_tools.py::test_lookup_similar_names_are_different_districts PASSED                                                   [ 10%]
+tests/test_tools.py::test_lookup_ignores_archived_profile PASSED                                                                [ 14%]
+tests/test_tools.py::test_lookup_applies_correction_notice PASSED                                                               [ 17%]
+tests/test_tools.py::test_lookup_converts_cubic_metres_to_megalitres PASSED                                                     [ 21%]
+tests/test_tools.py::test_lookup_unknown_field_and_bad_arguments PASSED                                                         [ 25%]
+tests/test_tools.py::test_lookup_tariff PASSED                                                                                  [ 28%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Ossbridge] PASSED                                             [ 32%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Ossford] PASSED                                               [ 35%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Tarnvale] PASSED                                              [ 39%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Kelmarsh] PASSED                                              [ 42%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Brightwater] PASSED                                           [ 46%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Stonecairn] PASSED                                            [ 50%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Harrowfield] PASSED                                           [ 53%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Lindenmoor] PASSED                                            [ 57%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Redfen] PASSED                                                [ 60%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Ashgrove] PASSED                                              [ 64%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Millbrook] PASSED                                             [ 67%]
+tests/test_tools.py::test_lookup_every_profile_parses_every_field[Coldharbour] PASSED                                           [ 71%]
+tests/test_tools.py::test_calculate_basic_multiplication PASSED                                                                 [ 75%]
+tests/test_tools.py::test_calculate_division_and_precedence PASSED                                                              [ 78%]
+tests/test_tools.py::test_calculate_division_by_zero PASSED                                                                     [ 82%]
+tests/test_tools.py::test_calculate_refuses_dangerous_input[__import__('os').system('echo hi')] PASSED                          [ 85%]
+tests/test_tools.py::test_calculate_refuses_dangerous_input[(1).__class__] PASSED                                               [ 89%]
+tests/test_tools.py::test_calculate_refuses_dangerous_input[9**9**9] PASSED                                                     [ 92%]
+tests/test_tools.py::test_calculate_refuses_names_strings_and_garbage PASSED                                                    [ 96%]
+tests/test_tools.py::test_calculate_limits PASSED                                                                               [100%]
+
+========================================================= 28 passed in 0.06s =========================================================
+(.venv) PS C:\Users\Asus\magzhanzhidekhan-hw4> 
 ```
 
 ### B3 — The loop
 
-- Round limit, and why:
-- Where the logs are:
-- Real Q-09 conversation compared with my A3 version, what is different:
+- Round limit, and why: `MAX_ROUNDS = 10`. A typical two-district question needs about 3 to 4 rounds (one round of lookups, one or two rounds of calculations, one final answer), so 10 leaves a margin for retries after tool errors and still stops a runaway loop. A question that reaches the limit is marked unanswered and wrong.
+- Where the logs are: `outputs/run<label>/logs/Q-xx.json` (one file per question for S3: every round, each tool call with its id, arguments, result and seconds). Summaries are in `outputs/run<label>/results_S1.json`, `results_S2.json`, `results_S3.json`.
+- Real Q-09 conversation compared with my A3 version, what is different: (to be written after the runs, from `outputs/run1/logs/Q-09.json`)
 
 ### B4 — Three strategies
 
 **What I kept the same:**
 
-<!-- model, temperature, k, prompts, answer format, anything else -->
+- Model `gpt-5.6-luna`, Chat Completions API, for all three strategies.
+- `reasoning_effort="none"` in every call of every strategy. My first S3 test failed with an error: this model does not allow function tools when reasoning is on. I turned reasoning off everywhere (not only in S3), so the comparison stays fair. This also means the step-by-step thinking in S2 is written in the reply text and is not hidden.
+- The same 20 questions from `data/questions.json`, in the same order. Only the question text is sent to the model; the correct answers are never in a prompt.
+- The same answer-format rule in every prompt: end with `ANSWER: <name or yes/no> | <number>`, at most 3 decimal places, no units, no thousands separators. One parser and one checker score all three strategies.
+- S1 and S2 use the same system prompt with all 17 documents. S2 only adds "Think step by step and show your calculation before the final line". S3 has no documents, only the two tools and an instruction to use them.
+- S2: k = 5 samples, temperature 1.0, calls made one after another. The model accepted `temperature` (`temperature_rejected: false`). S1 and S3 use the default temperature.
+- S2 voting: the vote is taken on the name (the most common name wins; if tied, the one seen first). The number is the median of the numbers given with that name. I first voted on the exact (name, number) pair, but this does not work: without a calculator the model gives slightly different numbers each time (for Q-09 I saw 0.568, 0.572, 0.573), so no two answers matched and the "vote" just picked the first sample.
+- S3: `MAX_ROUNDS = 10`, the same `lookup` and `calculate` definitions as in Part A.
+- Tokens are counted from the `usage` field of every call (all 5 samples in S2, every round in S3). Time is wall-clock seconds per question.
+- Cost = input tokens × $1 per 1M + output tokens × $6 per 1M (GPT-5.6 Luna prices from the OpenAI pricing page, 20 Oct 2026). I did not apply cache discounts, so the real bill may be a bit lower, especially for S2, which sends the same documents 5 times.
 
 **My rule for a correct answer** (written before the first full run):
+
+An answer is correct if the name in the ANSWER line equals the expected name (ignoring upper and lower case, yes/no included) and the number differs from the expected `value` by at most 10^-decimals (one unit in the last digit of the expected number). A reply with no parseable ANSWER line, or an S3 question that hits the round limit, is counted as unanswered and as wrong. In S2 the five answers are voted on by name, and the number is the median of the numbers with the winning name.
 
 | Run | Strategy | Correct /20 | Unanswered | Input tokens | Output tokens | Median seconds per question | Total seconds | Cost ($) |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
