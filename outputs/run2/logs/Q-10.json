@@ -1,0 +1,68 @@
+{
+  "parsed": [
+    "stonecairn",
+    8.0
+  ],
+  "unanswered": false,
+  "text": "Stonecairn is older by 8 years.\n\nANSWER: Stonecairn | 8",
+  "log": [
+    {
+      "round": 1,
+      "prompt_tokens": 563,
+      "tool_calls": [
+        {
+          "id": "call_zNhGweE4H4HWjJnpqsEfOkYX",
+          "tool": "lookup",
+          "arguments": "{\"district\": \"Stonecairn\", \"field\": \"founded_year\"}",
+          "result": {
+            "district": "Stonecairn",
+            "field": "founded_year",
+            "value": 1837,
+            "unit": "year",
+            "source": "NR-06"
+          },
+          "seconds": 0.00014
+        },
+        {
+          "id": "call_CKMHMZeeXbwJ0Zq7qjOxOqOS",
+          "tool": "lookup",
+          "arguments": "{\"district\": \"Coldharbour\", \"field\": \"founded_year\"}",
+          "result": {
+            "district": "Coldharbour",
+            "field": "founded_year",
+            "value": 1845,
+            "unit": "year",
+            "source": "NR-12"
+          },
+          "seconds": 3e-05
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "prompt_tokens": 715,
+      "tool_calls": [
+        {
+          "id": "call_wnFyman1V9bjK55JYwfUmVJa",
+          "tool": "calculate",
+          "arguments": "{\"expression\":\"1845 - 1837\"}",
+          "result": {
+            "result": 8
+          },
+          "seconds": 3e-05
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "final": "Stonecairn is older by 8 years.\n\nANSWER: Stonecairn | 8",
+      "prompt_tokens": 752
+    }
+  ],
+  "rounds": 3,
+  "in": 2030,
+  "out": 106,
+  "sec": 4.338907400146127,
+  "id": "Q-10",
+  "correct": true
+}

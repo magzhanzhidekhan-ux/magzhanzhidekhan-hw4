@@ -1,0 +1,838 @@
+{
+  "summary": {
+    "run": "2",
+    "strategy": "S2",
+    "model": "gpt-5.6-luna",
+    "temperature_rejected": false,
+    "correct": 14,
+    "n": 20,
+    "unanswered": 0,
+    "input_tokens": 220200,
+    "output_tokens": 12012,
+    "median_sec": 10.17,
+    "total_sec": 201.7,
+    "cost_usd": 0.2923
+  },
+  "rows": [
+    {
+      "parsed": [
+        "ossbridge",
+        4.57
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "ossbridge",
+          4.572
+        ],
+        [
+          "ossbridge",
+          4.568
+        ],
+        [
+          "ossbridge",
+          4.57
+        ],
+        [
+          "ossbridge",
+          4.568
+        ],
+        [
+          "ossbridge",
+          4.571
+        ]
+      ],
+      "texts": [
+        "Population density:\n\n- Ossbridge: \\(52,904 \\div 1,284.6 = 41.186\\) residents/km²\n- Ossford: \\(30,982 \\div 846.2 = 36.614\\) residents/km²\n\nDifference: \\(41.186 - 36.614 = 4.572\\) residents/km².\n\nANSWER: Ossbridge | 4.572",
+        "Population density = population ÷ area.\n\n- Ossbridge: 52,904 ÷ 1,284.6 = 41.183 residents/km²\n- Ossford: 30,982 ÷ 846.2 = 36.615 residents/km²\n\nDifference: 41.183 − 36.615 = 4.568 residents/km². Ossbridge has the higher population density.\n\nANSWER: Ossbridge | 4.568",
+        "Population density = population ÷ area.\n\n- Ossbridge: 52,904 ÷ 1,284.6 = 41.185 residents/km²\n- Ossford: 30,982 ÷ 846.2 = 36.615 residents/km²\n\nDifference: 41.185 − 36.615 = 4.570 residents/km². Ossbridge has the higher population density.\n\nANSWER: Ossbridge | 4.570",
+        "Population density = population ÷ area.\n\n- Ossbridge: 52,904 ÷ 1,284.6 = 41.183 residents/km²\n- Ossford: 30,982 ÷ 846.2 = 36.615 residents/km²\n\nDifference: 41.183 − 36.615 = 4.568 residents/km².\n\nANSWER: Ossbridge | 4.568",
+        "Population density is calculated as population ÷ area.\n\n- Ossbridge: 52,904 ÷ 1,284.6 = 41.187 residents/km²\n- Ossford: 30,982 ÷ 846.2 = 36.616 residents/km²\n- Difference: 41.187 − 36.616 = 4.571 residents/km²\n\nANSWER: Ossbridge | 4.571"
+      ],
+      "in": 10980,
+      "out": 460,
+      "sec": 9.0972881000489,
+      "id": "Q-01",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "harrowfield",
+        1.688
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "harrowfield",
+          1.687
+        ],
+        [
+          "harrowfield",
+          1.688
+        ],
+        [
+          "harrowfield",
+          1.688
+        ],
+        [
+          "harrowfield",
+          1.688
+        ],
+        [
+          "harrowfield",
+          1.689
+        ]
+      ],
+      "texts": [
+        "Tarnvale’s population growth:\n\\[\n\\frac{71,388-67,214}{67,214}\\times100\n=\\frac{4,174}{67,214}\\times100\n\\approx 6.210\\%\n\\]\n\nHarrowfield’s population growth:\n\\[\n\\frac{90,212-83,609}{83,609}\\times100\n=\\frac{6,603}{83,609}\\times100\n\\approx 7.897\\%\n\\]\n\nDifference:\n\\[\n7.897\\%-6.210\\%=1.687\\text{ percentage points}\n\\]\n\nHarrowfield grew faster by approximately 1.687 percentage points.\n\nANSWER: Harrowfield | 1.687",
+        "Tarnvale’s population growth:\n\\[\n\\frac{71,388-67,214}{67,214}\\times100\n=\\frac{4,174}{67,214}\\times100\n\\approx 6.210\\%\n\\]\n\nHarrowfield’s population growth:\n\\[\n\\frac{90,212-83,609}{83,609}\\times100\n=\\frac{6,603}{83,609}\\times100\n\\approx 7.898\\%\n\\]\n\nDifference:\n\\[\n7.898-6.210=1.688\n\\]\n\nHarrowfield grew faster by approximately 1.688 percentage points.\n\nANSWER: Harrowfield | 1.688",
+        "Tarnvale’s population growth:\n\\[\n\\frac{71,388-67,214}{67,214}\\times100\n=\\frac{4,174}{67,214}\\times100\n\\approx 6.210\\%\n\\]\n\nHarrowfield’s population growth:\n\\[\n\\frac{90,212-83,609}{83,609}\\times100\n=\\frac{6,603}{83,609}\\times100\n\\approx 7.898\\%\n\\]\n\nDifference:\n\\[\n7.898\\%-6.210\\%=1.688\\text{ percentage points}\n\\]\n\nANSWER: Harrowfield | 1.688",
+        "Tarnvale’s percentage growth:\n\\[\n\\frac{71,388-67,214}{67,214}\\times100\n=\\frac{4,174}{67,214}\\times100\n\\approx 6.210\\%\n\\]\n\nHarrowfield’s percentage growth:\n\\[\n\\frac{90,212-83,609}{83,609}\\times100\n=\\frac{6,603}{83,609}\\times100\n\\approx 7.898\\%\n\\]\n\nDifference:\n\\[\n7.898\\%-6.210\\%=1.688\\text{ percentage points}\n\\]\n\nHarrowfield grew faster by 1.688 percentage points.\n\nANSWER: Harrowfield | 1.688",
+        "Tarnvale’s population growth:\n\n\\[\n\\frac{71,388-67,214}{67,214}\\times 100\n= 6.209\\%\n\\]\n\nHarrowfield’s population growth:\n\n\\[\n\\frac{90,212-83,609}{83,609}\\times 100\n= 7.898\\%\n\\]\n\nDifference:\n\n\\[\n7.898-6.209=1.689\n\\]\n\nHarrowfield grew faster by 1.689 percentage points.\n\nANSWER: Harrowfield | 1.689"
+      ],
+      "in": 11010,
+      "out": 712,
+      "sec": 10.878711699973792,
+      "id": "Q-02",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "lindenmoor",
+        5.206
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "lindenmoor",
+          5.206
+        ],
+        [
+          "lindenmoor",
+          5.3
+        ],
+        [
+          "lindenmoor",
+          5.187
+        ],
+        [
+          "lindenmoor",
+          5.3
+        ],
+        [
+          "lindenmoor",
+          5.202
+        ]
+      ],
+      "texts": [
+        "Lindenmoor’s water use:  \n2,151,400 cubic metres = 2,151,400,000 litres  \n2,151,400,000 ÷ 29,051 residents ÷ 365 days = 202.873 litres per resident per day\n\nKelmarsh’s water use:  \n1,739 megalitres = 1,739,000,000 litres  \n1,739,000,000 ÷ 24,117 residents ÷ 365 days = 197.667 litres per resident per day\n\nDifference:  \n202.873 − 197.667 = 5.206 litres per resident per day\n\nANSWER: Lindenmoor | 5.206",
+        "Convert water use to litres and divide by residents and 365 days.\n\n- **Lindenmoor:** 2,151,400 m³ = 2,151,400,000 litres  \n  \\(2,151,400,000 \\div 29,051 \\div 365 \\approx 202.9\\) litres per resident per day\n\n- **Kelmarsh:** 1,739 ML = 1,739,000,000 litres  \n  \\(1,739,000,000 \\div 24,117 \\div 365 \\approx 197.6\\) litres per resident per day\n\nDifference:  \n\\(202.9 - 197.6 \\approx 5.3\\) litres per resident per day.\n\nANSWER: Lindenmoor | 5.3",
+        "Lindenmoor’s water use must first be converted from cubic metres to megalitres:\n\n- Lindenmoor: 2,151,400 m³ = 2,151.4 ML  \n- Kelmarsh: 1,739 ML  \n\nUsing 365 days:\n\n- Lindenmoor: \\(2,151,400,000 \\div 29,051 \\div 365 = 202.855\\) litres per resident per day\n- Kelmarsh: \\(1,739,000,000 \\div 24,117 \\div 365 = 197.668\\) litres per resident per day\n\nDifference:\n\n\\(202.855 - 197.668 = 5.187\\) litres per resident per day.\n\nANSWER: Lindenmoor | 5.187",
+        "Lindenmoor’s water use must first be converted from cubic metres to megalitres:\n\n- Lindenmoor: 2,151,400 m³ = 2,151.4 ML\n- Kelmarsh: 1,739 ML\n\nUsing 365 days:\n\n- Lindenmoor: \\(2,151,400,000 \\div 29,051 \\div 365 = 202.9\\) litres per resident per day\n- Kelmarsh: \\(1,739,000,000 \\div 24,117 \\div 365 = 197.6\\) litres per resident per day\n\nDifference:\n\n\\(202.9 - 197.6 = 5.3\\) litres per resident per day.\n\nANSWER: Lindenmoor | 5.3",
+        "Lindenmoor’s water use must first be converted from cubic metres to megalitres:\n\n- Lindenmoor: 2,151,400 m³ = 2,151.4 ML  \n- Kelmarsh: 1,739 ML  \n\nWater per resident per day:\n\n- Lindenmoor: \\(2,151,400,000 \\div 29,051 \\div 365 \\approx 202.884\\) litres\n- Kelmarsh: \\(1,739,000,000 \\div 24,117 \\div 365 \\approx 197.682\\) litres\n\nDifference:\n\n\\[\n202.884 - 197.682 = 5.202\n\\]\n\nLindenmoor’s households used more water, by approximately 5.202 litres per resident per day.\n\nANSWER: Lindenmoor | 5.202"
+      ],
+      "in": 11010,
+      "out": 812,
+      "sec": 12.10502490028739,
+      "id": "Q-03",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "millbrook",
+        2.592
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "millbrook",
+          2.592
+        ],
+        [
+          "millbrook",
+          2.592
+        ],
+        [
+          "millbrook",
+          2.592
+        ],
+        [
+          "millbrook",
+          2.592
+        ],
+        [
+          "millbrook",
+          2.592
+        ]
+      ],
+      "texts": [
+        "Ashgrove: \\(8,837 \\div 24 = 368.208\\) pupils per school.  \nMillbrook: \\(5,562 \\div 15 = 370.800\\) pupils per school.  \n\nDifference: \\(370.800 - 368.208 = 2.592\\) pupils per school. Millbrook has more.\n\nANSWER: Millbrook | 2.592",
+        "Ashgrove: \\(8,837 \\div 24 = 368.208\\) pupils per school.\n\nMillbrook: \\(5,562 \\div 15 = 370.800\\) pupils per school.\n\nDifference: \\(370.800 - 368.208 = 2.592\\) pupils per school.\n\nANSWER: Millbrook | 2.592",
+        "Ashgrove: \\(8,837 \\div 24 = 368.208\\) pupils per school.\n\nMillbrook: \\(5,562 \\div 15 = 370.800\\) pupils per school.\n\nDifference: \\(370.800 - 368.208 = 2.592\\) pupils per school.\n\nANSWER: Millbrook | 2.592",
+        "Ashgrove: \\(8,837 \\div 24 = 368.208\\) pupils per school.  \nMillbrook: \\(5,562 \\div 15 = 370.800\\) pupils per school.  \n\nDifference: \\(370.800 - 368.208 = 2.592\\) pupils per school. Millbrook has more.\n\nANSWER: Millbrook | 2.592",
+        "Ashgrove: \\(8,837 \\div 24 = 368.208\\) pupils per school.\n\nMillbrook: \\(5,562 \\div 15 = 370.800\\) pupils per school.\n\nDifference: \\(370.800 - 368.208 = 2.592\\) pupils per school.\n\nANSWER: Millbrook | 2.592"
+      ],
+      "in": 10985,
+      "out": 409,
+      "sec": 7.9767042002640665,
+      "id": "Q-04",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "coldharbour",
+        14247.0
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "coldharbour",
+          14205.777
+        ],
+        [
+          "coldharbour",
+          14266.66
+        ],
+        [
+          "coldharbour",
+          14215.06
+        ],
+        [
+          "coldharbour",
+          14266.381
+        ],
+        [
+          "coldharbour",
+          14247.0
+        ]
+      ],
+      "texts": [
+        "Stonecairn:\n\n\\[\n\\frac{2{,}884.6\\text{ million tenge}}{14{,}926}\n=\\frac{2{,}884{,}600{,}000}{14{,}926}\n\\approx 193{,}273.420\n\\]\n\nColdharbour:\n\n\\[\n\\frac{2{,}366.9\\text{ million tenge}}{11{,}407}\n=\\frac{2{,}366{,}900{,}000}{11{,}407}\n\\approx 207{,}479.197\n\\]\n\nDifference:\n\n\\[\n207{,}479.197-193{,}273.420\n=14{,}205.777\n\\]\n\nColdharbour had the larger 2025 budget per resident, by approximately 14,205.777 tenge per resident.\n\nANSWER: Coldharbour | 14205.777",
+        "Stonecairn’s budget per resident:\n\n2,884.6 million tenge ÷ 14,926 residents  \n= 2,884,600,000 ÷ 14,926  \n≈ 193,248.024 tenge per resident\n\nColdharbour’s budget per resident:\n\n2,366.9 million tenge ÷ 11,407 residents  \n= 2,366,900,000 ÷ 11,407  \n≈ 207,514.684 tenge per resident\n\nDifference:\n\n207,514.684 − 193,248.024 = 14,266.660 tenge per resident\n\nANSWER: Coldharbour | 14266.660",
+        "Stonecairn:\n\n2,884.6 million tenge ÷ 14,926 residents  \n= 2,884,600,000 ÷ 14,926  \n≈ 193,283.932 tenge per resident\n\nColdharbour:\n\n2,366.9 million tenge ÷ 11,407 residents  \n= 2,366,900,000 ÷ 11,407  \n≈ 207,498.992 tenge per resident\n\nDifference:\n\n207,498.992 − 193,283.932  \n≈ 14,215.060 tenge per resident\n\nANSWER: Coldharbour | 14215.060",
+        "Stonecairn’s 2025 budget per resident:\n\n2,884.6 million tenge ÷ 14,926 residents  \n= 2,884,600,000 ÷ 14,926  \n≈ 193,234.276 tenge per resident\n\nColdharbour’s 2025 budget per resident:\n\n2,366.9 million tenge ÷ 11,407 residents  \n= 2,366,900,000 ÷ 11,407  \n≈ 207,500.657 tenge per resident\n\nDifference:\n\n207,500.657 − 193,234.276 = 14,266.381 tenge per resident\n\nANSWER: Coldharbour | 14266.381",
+        "Stonecairn: \\(2{,}884.6\\) million tenge ÷ \\(14{,}926\\) residents  \n= \\(2{,}884{,}600{,}000 ÷ 14{,}926 \\approx 193{,}277.3\\) tenge per resident.\n\nColdharbour: \\(2{,}366.9\\) million tenge ÷ \\(11{,}407\\) residents  \n= \\(2{,}366{,}900{,}000 ÷ 11{,}407 \\approx 207{,}524.3\\) tenge per resident.\n\nDifference: \\(207{,}524.3 - 193{,}277.3 \\approx 14{,}247.0\\) tenge per resident.\n\nANSWER: Coldharbour | 14247.0"
+      ],
+      "in": 10990,
+      "out": 827,
+      "sec": 13.170784699730575,
+      "id": "Q-05",
+      "correct": false
+    },
+    {
+      "parsed": [
+        "yes",
+        14069.0
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "yes",
+          14069.0
+        ],
+        [
+          "yes",
+          14069.0
+        ],
+        [
+          "yes",
+          14069.0
+        ],
+        [
+          "yes",
+          14069.0
+        ],
+        [
+          "yes",
+          14069.0
+        ]
+      ],
+      "texts": [
+        "Redfen and Kelmarsh combined:\n\n20,934 + 24,117 = 45,051 residents\n\nDifference from Ossford:\n\n45,051 − 30,982 = 14,069 residents\n\nYes, the combined population is larger by 14,069 residents.\n\nANSWER: yes | 14069",
+        "Redfen and Kelmarsh combined: 20,934 + 24,117 = 45,051 residents.\n\nDifference from Ossford: 45,051 − 30,982 = 14,069 residents.\n\nThe combined population is larger.\n\nANSWER: yes | 14069",
+        "Redfen and Kelmarsh combined: 20,934 + 24,117 = 45,051 residents.\n\nDifference from Ossford: 45,051 − 30,982 = 14,069 residents.\n\nANSWER: yes | 14069",
+        "Redfen and Kelmarsh combined: 20,934 + 24,117 = 45,051 residents.\n\nDifference from Ossford: 45,051 − 30,982 = 14,069 residents.\n\nThe combined population is larger.\n\nANSWER: yes | 14069",
+        "Redfen and Kelmarsh combined:\n\n20,934 + 24,117 = 45,051 residents\n\nDifference from Ossford:\n\n45,051 − 30,982 = 14,069 residents\n\nSo, the combined population is larger by 14,069 residents.\n\nANSWER: yes | 14069"
+      ],
+      "in": 11010,
+      "out": 311,
+      "sec": 8.061261100228876,
+      "id": "Q-06",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "coldharbour",
+        18.498
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "coldharbour",
+          18.496
+        ],
+        [
+          "coldharbour",
+          18.501
+        ],
+        [
+          "coldharbour",
+          18.501
+        ],
+        [
+          "coldharbour",
+          18.498
+        ],
+        [
+          "coldharbour",
+          18.498
+        ]
+      ],
+      "texts": [
+        "Coldharbour: \\(598.3 \\div 11{,}407 \\times 1{,}000 = 52.453\\) km per 1,000 residents.\n\nStonecairn: \\(506.8 \\div 14{,}926 \\times 1{,}000 = 33.957\\) km per 1,000 residents.\n\nDifference: \\(52.453 - 33.957 = 18.496\\) km per 1,000 residents.\n\nANSWER: Coldharbour | 18.496",
+        "Calculate paved road per 1,000 residents:\n\n- **Coldharbour:** \\(598.3 \\div 11,407 \\times 1,000 = 52.456\\) km per 1,000 residents\n- **Stonecairn:** \\(506.8 \\div 14,926 \\times 1,000 = 33.955\\) km per 1,000 residents\n\nDifference:\n\n\\(52.456 - 33.955 = 18.501\\) km per 1,000 residents\n\nANSWER: Coldharbour | 18.501",
+        "Coldharbour:\n\n\\[\n\\frac{598.3\\text{ km}}{11,407}\\times 1,000 = 52.456\\text{ km per 1,000 residents}\n\\]\n\nStonecairn:\n\n\\[\n\\frac{506.8\\text{ km}}{14,926}\\times 1,000 = 33.955\\text{ km per 1,000 residents}\n\\]\n\nDifference:\n\n\\[\n52.456 - 33.955 = 18.501\\text{ km per 1,000 residents}\n\\]\n\nANSWER: Coldharbour | 18.501",
+        "Coldharbour:  \n\\(598.3 \\div 11,407 \\times 1,000 = 52.453\\) km per 1,000 residents\n\nStonecairn:  \n\\(506.8 \\div 14,926 \\times 1,000 = 33.955\\) km per 1,000 residents\n\nDifference:  \n\\(52.453 - 33.955 = 18.498\\) km per 1,000 residents\n\nANSWER: Coldharbour | 18.498",
+        "Coldharbour: \\(598.3 \\div 11,407 \\times 1,000 = 52.453\\) km per 1,000 residents.\n\nStonecairn: \\(506.8 \\div 14,926 \\times 1,000 = 33.955\\) km per 1,000 residents.\n\nDifference: \\(52.453 - 33.955 = 18.498\\) km per 1,000 residents.\n\nANSWER: Coldharbour | 18.498"
+      ],
+      "in": 11030,
+      "out": 599,
+      "sec": 10.354160699993372,
+      "id": "Q-07",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "brightwater",
+        72.456
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "brightwater",
+          72.456
+        ],
+        [
+          "brightwater",
+          72.456
+        ],
+        [
+          "brightwater",
+          72.456
+        ],
+        [
+          "brightwater",
+          72.456
+        ],
+        [
+          "brightwater",
+          72.456
+        ]
+      ],
+      "texts": [
+        "Brightwater used 3,315 megalitres, while Millbrook used 2,806 megalitres.\n\nDifference in use:\n\n3,315 − 2,806 = 509 megalitres\n\nSince 1 megalitre = 1,000 cubic metres, the difference was:\n\n509 × 1,000 = 509,000 cubic metres\n\nAt 142.35 tenge per cubic metre:\n\n509,000 × 142.35 = 72,456,150 tenge = 72.45615 million tenge\n\nBrightwater's households paid more.\n\nANSWER: Brightwater | 72.456",
+        "Brightwater used 3,315 megalitres, while Millbrook used 2,806 megalitres.\n\nDifference in water use:\n\n3,315 − 2,806 = 509 megalitres\n\nSince 1 megalitre = 1,000 cubic metres, the difference is:\n\n509 × 1,000 = 509,000 cubic metres\n\nAt 142.35 tenge per cubic metre:\n\n509,000 × 142.35 = 72,456,150 tenge\n\nConverting to million tenge:\n\n72,456,150 ÷ 1,000,000 = 72.45615 million tenge\n\nRounded to three decimal places, Brightwater's households paid 72.456 million tenge more.\n\nANSWER: Brightwater | 72.456",
+        "Brightwater used 3,315 megalitres, while Millbrook used 2,806 megalitres.\n\nDifference in use:\n3,315 − 2,806 = 509 megalitres\n\nSince 1 megalitre = 1,000 cubic metres, the difference was:\n509 × 1,000 = 509,000 cubic metres\n\nAt 142.35 tenge per cubic metre:\n509,000 × 142.35 = 72,456,150 tenge\n= 72.45615 million tenge\n\nBrightwater's households paid more by 72.45615 million tenge.\n\nANSWER: Brightwater | 72.456",
+        "Brightwater used 3,315 megalitres, while Millbrook used 2,806 megalitres.\n\nDifference in water use:\n\n3,315 − 2,806 = 509 megalitres\n\nSince 1 megalitre = 1,000 cubic metres, the difference was:\n\n509 × 1,000 = 509,000 cubic metres\n\nAt 142.35 tenge per cubic metre:\n\n509,000 × 142.35 = 72,? Wait calculate: 142.35 × 509,000 = 72,? 142.35 × 509 = 72,? 142.35×500=71,175; ×9=1,281.15; total 72,456.15 thousand = 72,456,150 tenge = 72.45615 million tenge.\n\nBrightwater's households paid more.\n\nANSWER: Brightwater | 72.456",
+        "Brightwater households used 3,315 megalitres, while Millbrook households used 2,806 megalitres.\n\nDifference in use:\n\n3,315 − 2,806 = 509 megalitres\n\nSince 1 megalitre = 1,000 cubic metres, the difference is 509,000 cubic metres.\n\nAt 142.35 tenge per cubic metre:\n\n509,000 × 142.35 = 72,456,150 tenge\n\n72,456,150 tenge = 72.45615 million tenge, which rounds to 72.456 million tenge.\n\nANSWER: Brightwater | 72.456"
+      ],
+      "in": 11020,
+      "out": 784,
+      "sec": 12.417155700270087,
+      "id": "Q-08",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "millbrook",
+        0.572
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "millbrook",
+          0.559
+        ],
+        [
+          "millbrook",
+          0.573
+        ],
+        [
+          "millbrook",
+          0.572
+        ],
+        [
+          "millbrook",
+          0.572
+        ],
+        [
+          "millbrook",
+          0.571
+        ]
+      ],
+      "texts": [
+        "Using the corrected Brightwater area:\n\n- Brightwater: \\(44,675 \\div 921.4 = 48.480\\) residents/km²\n- Millbrook: \\(37,203 \\div 758.6 = 49.039\\) residents/km²\n- Difference: \\(49.039 - 48.480 = 0.559\\) residents/km²\n\nMillbrook has the higher population density by 0.559 residents per square kilometre.\n\nANSWER: Millbrook | 0.559",
+        "Brightwater’s corrected area is 921.4 km², so its population density is:\n\n44,675 ÷ 921.4 = 48.481 residents/km²\n\nMillbrook’s population density is:\n\n37,203 ÷ 758.6 = 49.054 residents/km²\n\nDifference:\n\n49.054 − 48.481 = 0.573 residents/km²\n\nMillbrook has the higher population density.\n\nANSWER: Millbrook | 0.573",
+        "Using the corrected Brightwater area:\n\n- Brightwater: \\(44,675 \\div 921.4 = 48.482\\) residents/km²\n- Millbrook: \\(37,203 \\div 758.6 = 49.054\\) residents/km²\n- Difference: \\(49.054 - 48.482 = 0.572\\) residents/km²\n\nMillbrook has the higher population density by 0.572 residents per square kilometre.\n\nANSWER: Millbrook | 0.572",
+        "Using the corrected Brightwater area:\n\n- Brightwater: \\(44,675 \\div 921.4 = 48.481\\) residents/km²\n- Millbrook: \\(37,203 \\div 758.6 = 49.053\\) residents/km²\n- Difference: \\(49.053 - 48.481 = 0.572\\) residents/km²\n\nMillbrook has the higher population density.\n\nANSWER: Millbrook | 0.572",
+        "Population density = population ÷ area.\n\n- Brightwater: 44,675 ÷ 921.4 = 48.482 residents/km²\n- Millbrook: 37,203 ÷ 758.6 = 49.053 residents/km²\n\nMillbrook has the higher population density by:\n\n49.053 − 48.482 = 0.571 residents/km²\n\nANSWER: Millbrook | 0.571"
+      ],
+      "in": 10980,
+      "out": 513,
+      "sec": 8.891052700113505,
+      "id": "Q-09",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "stonecairn",
+        8.0
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "stonecairn",
+          8.0
+        ],
+        [
+          "stonecairn",
+          8.0
+        ],
+        [
+          "stonecairn",
+          8.0
+        ],
+        [
+          "stonecairn",
+          8.0
+        ],
+        [
+          "stonecairn",
+          8.0
+        ]
+      ],
+      "texts": [
+        "Stonecairn was founded in 1837, while Coldharbour was founded in 1845.\n\nCalculation: 1845 − 1837 = 8 years.\n\nANSWER: Stonecairn | 8",
+        "Stonecairn was founded in 1837, while Coldharbour was founded in 1845.\n\nCalculation: 1845 − 1837 = 8 years.\n\nANSWER: Stonecairn | 8",
+        "Stonecairn was founded in 1837, while Coldharbour was founded in 1845.\n\nCalculation: 1845 − 1837 = 8 years.\n\nANSWER: Stonecairn | 8",
+        "Stonecairn was founded in 1837, while Coldharbour was founded in 1845.\n\nCalculation: 1845 − 1837 = 8 years.\n\nANSWER: Stonecairn | 8",
+        "Stonecairn was founded in 1837, while Coldharbour was founded in 1845.\n\nCalculation: 1845 − 1837 = 8 years.\n\nANSWER: Stonecairn | 8"
+      ],
+      "in": 10965,
+      "out": 240,
+      "sec": 6.361934999935329,
+      "id": "Q-10",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "redfen",
+        56.1
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "redfen",
+          56.1
+        ],
+        [
+          "redfen",
+          56.1
+        ],
+        [
+          "redfen",
+          56.1
+        ],
+        [
+          "redfen",
+          56.1
+        ],
+        [
+          "redfen",
+          56.1
+        ]
+      ],
+      "texts": [
+        "Calculate pupils per school:\n\n- Redfen: \\(3,147 \\div 10 = 314.7\\)\n- Ashgrove: \\(8,837 \\div 24 \\approx 368.208\\)\n- Millbrook: \\(5,562 \\div 15 = 370.8\\)\n\nRedfen has the fewest pupils per school. The difference between the highest (Millbrook) and lowest (Redfen) is:\n\n\\(370.8 - 314.7 = 56.1\\)\n\nANSWER: Redfen | 56.1",
+        "Calculate pupils per school:\n\n- Redfen: 3,147 ÷ 10 = 314.7\n- Ashgrove: 8,837 ÷ 24 = 368.208\n- Millbrook: 5,562 ÷ 15 = 370.8\n\nRedfen has the fewest pupils per school. The difference between the highest (Millbrook) and lowest (Redfen) is:\n\n370.8 − 314.7 = 56.1\n\nANSWER: Redfen | 56.1",
+        "Calculate pupils per school:\n\n- Redfen: 3,147 ÷ 10 = 314.7 pupils per school\n- Ashgrove: 8,837 ÷ 24 = 368.208 pupils per school\n- Millbrook: 5,562 ÷ 15 = 370.8 pupils per school\n\nRedfen has the fewest pupils per school. Difference between the highest and lowest:\n\n370.8 − 314.7 = 56.1\n\nANSWER: Redfen | 56.1",
+        "Calculate pupils per school:\n\n- Redfen: 3,147 ÷ 10 = 314.7 pupils per school\n- Ashgrove: 8,837 ÷ 24 = 368.208 pupils per school\n- Millbrook: 5,562 ÷ 15 = 370.8 pupils per school\n\nRedfen has the fewest pupils per school.\n\nDifference between the highest and lowest: 370.8 − 314.7 = 56.1 pupils per school.\n\nANSWER: Redfen | 56.1",
+        "Calculate pupils per school:\n\n- Redfen: \\(3,147 \\div 10 = 314.7\\)\n- Ashgrove: \\(8,837 \\div 24 \\approx 368.208\\)\n- Millbrook: \\(5,562 \\div 15 = 370.8\\)\n\nRedfen has the fewest pupils per school. The difference between the highest and lowest is:\n\n\\(370.8 - 314.7 = 56.1\\)\n\nANSWER: Redfen | 56.1"
+      ],
+      "in": 11055,
+      "out": 571,
+      "sec": 9.977223699912429,
+      "id": "Q-11",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "tarnvale",
+        64.459
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "tarnvale",
+          64.79
+        ],
+        [
+          "tarnvale",
+          64.459
+        ],
+        [
+          "tarnvale",
+          64.7
+        ],
+        [
+          "tarnvale",
+          64.4
+        ],
+        [
+          "tarnvale",
+          64.065
+        ]
+      ],
+      "texts": [
+        "Harrowfield: \\(16{,}021.7\\) million tenge ÷ \\(13{,}904\\) pupils  \n\\(= 1{,}152.03\\) thousand tenge per pupil.\n\nTarnvale: \\(12{,}960.3\\) million tenge ÷ \\(10{,}652\\) pupils  \n\\(= 1{,}216.82\\) thousand tenge per pupil.\n\nDifference: \\(1{,}216.82 - 1{,}152.03 = 64.79\\) thousand tenge per pupil.\n\nANSWER: Tarnvale | 64.79",
+        "Harrowfield:  \n16,021.7 million tenge ÷ 13,904 pupils = 1,152.026 thousand tenge per pupil\n\nTarnvale:  \n12,960.3 million tenge ÷ 10,652 pupils = 1,216.485 thousand tenge per pupil\n\nDifference:  \n1,216.485 − 1,152.026 = 64.459 thousand tenge per pupil\n\nANSWER: Tarnvale | 64.459",
+        "Harrowfield: \\(16{,}021.7\\) million tenge ÷ \\(13{,}904\\) pupils \\(= 1{,}152.0\\) thousand tenge per pupil.\n\nTarnvale: \\(12{,}960.3\\) million tenge ÷ \\(10{,}652\\) pupils \\(= 1{,}216.7\\) thousand tenge per pupil.\n\nDifference: \\(1{,}216.7 - 1{,}152.0 = 64.7\\) thousand tenge per pupil.\n\nANSWER: Tarnvale | 64.7",
+        "Harrowfield:  \n16,021.7 million tenge ÷ 13,904 pupils = 1,152.3 thousand tenge per pupil\n\nTarnvale:  \n12,960.3 million tenge ÷ 10,652 pupils = 1,216.7 thousand tenge per pupil\n\nDifference:  \n1,216.7 − 1,152.3 = 64.4 thousand tenge per pupil\n\nANSWER: Tarnvale | 64.4",
+        "Harrowfield: \\(16{,}021.7\\) million tenge ÷ \\(13{,}904\\) pupils  \n\\(= 1{,}152.138\\) thousand tenge per pupil.\n\nTarnvale: \\(12{,}960.3\\) million tenge ÷ \\(10{,}652\\) pupils  \n\\(= 1{,}216.203\\) thousand tenge per pupil.\n\nDifference: \\(1{,}216.203 - 1{,}152.138 = 64.065\\) thousand tenge per pupil.\n\nANSWER: Tarnvale | 64.065"
+      ],
+      "in": 10995,
+      "out": 620,
+      "sec": 9.438663100358099,
+      "id": "Q-12",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "coldharbour",
+        4.159
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "coldharbour",
+          4.159
+        ],
+        [
+          "coldharbour",
+          4.159
+        ],
+        [
+          "coldharbour",
+          4.159
+        ],
+        [
+          "coldharbour",
+          4.159
+        ],
+        [
+          "coldharbour",
+          4.158
+        ]
+      ],
+      "texts": [
+        "Calculate each percentage loss as:\n\n- **Ossford:** \\((31,560 - 30,982) / 31,560 \\times 100 = 1.832\\%\\)\n- **Stonecairn:** \\((15,473 - 14,926) / 15,473 \\times 100 = 3.534\\%\\)\n- **Coldharbour:** \\((11,902 - 11,407) / 11,902 \\times 100 = 4.159\\%\\)\n\nColdharbour lost the largest percentage.\n\nANSWER: Coldharbour | 4.159",
+        "Calculate each percentage population loss:\n\n- **Ossford:** \\((31,560 - 30,982) / 31,560 \\times 100 = 1.833\\%\\)\n- **Stonecairn:** \\((15,473 - 14,926) / 15,473 \\times 100 = 3.534\\%\\)\n- **Coldharbour:** \\((11,902 - 11,407) / 11,902 \\times 100 = 4.159\\%\\)\n\nColdharbour lost the largest percentage.\n\nANSWER: Coldharbour | 4.159",
+        "Population losses:\n\n- **Ossford:** \\(31,560 - 30,982 = 578\\)  \n  Percentage loss: \\(\\frac{578}{31,560}\\times100 = 1.831\\%\\)\n\n- **Stonecairn:** \\(15,473 - 14,926 = 547\\)  \n  Percentage loss: \\(\\frac{547}{15,473}\\times100 = 3.535\\%\\)\n\n- **Coldharbour:** \\(11,902 - 11,407 = 495\\)  \n  Percentage loss: \\(\\frac{495}{11,902}\\times100 = 4.159\\%\\)\n\nColdharbour lost the largest percentage.\n\nANSWER: Coldharbour | 4.159",
+        "Calculate each percentage decrease:\n\n- **Ossford:** \\((31,560 - 30,982) / 31,560 \\times 100 = 1.832\\%\\)\n- **Stonecairn:** \\((15,473 - 14,926) / 15,473 \\times 100 = 3.534\\%\\)\n- **Coldharbour:** \\((11,902 - 11,407) / 11,902 \\times 100 = 4.159\\%\\)\n\nColdharbour lost the largest percentage of its population.\n\nANSWER: Coldharbour | 4.159",
+        "Percentage population loss:\n\n- **Ossford:** \\((31,560 - 30,982) / 31,560 \\times 100 = 1.832\\%\\)\n- **Stonecairn:** \\((15,473 - 14,926) / 15,473 \\times 100 = 3.534\\%\\)\n- **Coldharbour:** \\((11,902 - 11,407) / 11,902 \\times 100 = 4.158\\%\\)\n\nColdharbour lost the largest percentage.\n\nANSWER: Coldharbour | 4.158"
+      ],
+      "in": 11035,
+      "out": 680,
+      "sec": 11.598675900138915,
+      "id": "Q-13",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "ashgrove",
+        4.726
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "ashgrove",
+          0.005
+        ],
+        [
+          "ashgrove",
+          4.726
+        ],
+        [
+          "ashgrove",
+          4.685
+        ],
+        [
+          "ashgrove",
+          4.842
+        ],
+        [
+          "ashgrove",
+          4.817
+        ]
+      ],
+      "texts": [
+        "Tarnvale:\n\n- Water use per resident per day = \\(5{,}207{,}000 \\div 71{,}388 \\div 365 \\approx 0.200\\) litres\n- Ashgrove: \\(4{,}390{,}000 \\div 58{,}760 \\div 365 \\approx 0.205\\) litres\n- Difference = \\(0.205 - 0.200 \\approx 0.005\\) litres per resident per day\n\nAshgrove used more.\n\nANSWER: Ashgrove | 0.005",
+        "Tarnvale:\n\n- Water use: 5,207 megalitres = 5,207,000,000 litres\n- Population: 71,388\n- Daily use per resident: 5,207,000,000 ÷ 71,388 ÷ 365 ≈ 199.890 litres\n\nAshgrove:\n\n- Water use: 4,390 megalitres = 4,390,000,000 litres\n- Population: 58,760\n- Daily use per resident: 4,390,000,000 ÷ 58,760 ÷ 365 ≈ 204.616 litres\n\nDifference: 204.616 − 199.890 = 4.726 litres per resident per day. Ashgrove's households used more.\n\nANSWER: Ashgrove | 4.726",
+        "Tarnvale:\n- Water use: 5,207 megalitres = 5,207,000,000 litres\n- Population: 71,388\n- Per resident per day: 5,207,000,000 ÷ 71,388 ÷ 365 ≈ 199.961 litres\n\nAshgrove:\n- Water use: 4,390 megalitres = 4,390,000,000 litres\n- Population: 58,760\n- Per resident per day: 4,390,000,000 ÷ 58,760 ÷ 365 ≈ 204.646 litres\n\nDifference: 204.646 − 199.961 ≈ 4.685 litres per resident per day. Ashgrove used more.\n\nANSWER: Ashgrove | 4.685",
+        "Tarnvale:\n- Water use: 5,207 megalitres = 5,207,000,000 litres\n- Population: 71,388\n- Daily per-resident use: 5,207,000,000 ÷ 71,388 ÷ 365 ≈ 199.864 litres\n\nAshgrove:\n- Water use: 4,390 megalitres = 4,390,000,000 litres\n- Population: 58,760\n- Daily per-resident use: 4,390,000,000 ÷ 58,760 ÷ 365 ≈ 204.706 litres\n\nDifference: 204.706 − 199.864 ≈ 4.842 litres per resident per day. Ashgrove was higher.\n\nANSWER: Ashgrove | 4.842",
+        "Tarnvale:\n- Water use: 5,207 megalitres = 5,207,000,000 litres\n- Population: 71,388\n- Per resident per day: 5,207,000,000 ÷ 71,388 ÷ 365 ≈ 199.844 litres\n\nAshgrove:\n- Water use: 4,390 megalitres = 4,390,000,000 litres\n- Population: 58,760\n- Per resident per day: 4,390,000,000 ÷ 58,760 ÷ 365 ≈ 204.661 litres\n\nDifference: 204.661 − 199.844 ≈ 4.817 litres per resident per day. Ashgrove used more.\n\nANSWER: Ashgrove | 4.817"
+      ],
+      "in": 11010,
+      "out": 833,
+      "sec": 11.543736999854445,
+      "id": "Q-14",
+      "correct": false
+    },
+    {
+      "parsed": [
+        "redfen",
+        17.973
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "redfen",
+          17.973
+        ],
+        [
+          "redfen",
+          17.609
+        ],
+        [
+          "redfen",
+          17.973
+        ],
+        [
+          "redfen",
+          17.973
+        ],
+        [
+          "redfen",
+          17.609
+        ]
+      ],
+      "texts": [
+        "Kelmarsh: \\(3,268 \\div 11 = 296. на\\) pupils per school.\n\nRedfen: \\(3,147 \\div 10 = 314.7\\) pupils per school.\n\nDifference: \\(314.7 - 296.727... = 17.973...\\), so Redfen has more by 17.973 pupils per school.\n\nANSWER: Redfen | 17.973",
+        "Kelmarsh: \\(3,268 \\div 11 = 297.091\\) pupils per school.\n\nRedfen: \\(3,147 \\div 10 = 314.700\\) pupils per school.\n\nDifference: \\(314.700 - 297.091 = 17.609\\) pupils per school. Redfen has more.\n\nANSWER: Redfen | 17.609",
+        "Kelmarsh: \\(3,268 \\div 11 = 296.? \\approx 296.727\\) pupils per school.\n\nRedfen: \\(3,147 \\div 10 = 314.7\\) pupils per school.\n\nDifference: \\(314.7 - 296.727 = 17.973\\) pupils per school.\n\nANSWER: Redfen | 17.973",
+        "Kelmarsh: \\(3,268 \\div 11 = 296.727\\) pupils per school.\n\nRedfen: \\(3,147 \\div 10 = 314.700\\) pupils per school.\n\nDifference: \\(314.700 - 296.727 = 17.973\\) pupils per school.\n\nANSWER: Redfen | 17.973",
+        "Kelmarsh: \\(3,268 \\div 11 = 297.091\\) pupils per school.\n\nRedfen: \\(3,147 \\div 10 = 314.700\\) pupils per school.\n\nDifference: \\(314.700 - 297.091 = 17.609\\) pupils per school. Redfen has more.\n\nANSWER: Redfen | 17.609"
+      ],
+      "in": 10985,
+      "out": 422,
+      "sec": 7.910970900207758,
+      "id": "Q-15",
+      "correct": false
+    },
+    {
+      "parsed": [
+        "yes",
+        23.9
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "yes",
+          23.9
+        ],
+        [
+          "yes",
+          23.9
+        ],
+        [
+          "yes",
+          23.9
+        ],
+        [
+          "yes",
+          23.9
+        ],
+        [
+          "yes",
+          23.9
+        ]
+      ],
+      "texts": [
+        "Ossbridge and Ossford combined:\n\n1,284.6 + 846.2 = 2,130.8 square kilometres\n\nDifference from Tarnvale:\n\n2,130.8 − 2,106.9 = 23.9 square kilometres\n\nSo, the combined area is larger by 23.9 square kilometres.\n\nANSWER: yes | 23.9",
+        "Ossbridge and Ossford combined:\n\n1,284.6 + 846.2 = 2,130.8 square kilometres\n\nDifference from Tarnvale:\n\n2,130.8 − 2,106.9 = 23.9 square kilometres\n\nThe combined area is larger.\n\nANSWER: yes | 23.9",
+        "Ossbridge and Ossford combined:\n\n1,284.6 + 846.2 = 2,130.8 square kilometres\n\nDifference from Tarnvale:\n\n2,130.8 − 2,106.9 = 23.9 square kilometres\n\nThe combined area is larger.\n\nANSWER: yes | 23.9",
+        "Ossbridge and Ossford combined:\n\n1,284.6 + 846.2 = 2,130.8 square kilometres\n\nTarnvale’s area:\n\n2,106.9 square kilometres\n\nDifference:\n\n2,130.8 − 2,106.9 = 23.9 square kilometres\n\nThe combined area is larger.\n\nANSWER: yes | 23.9",
+        "Ossbridge and Ossford combined:\n\n1,284.6 + 846.2 = 2,130.8 square kilometres\n\nDifference from Tarnvale:\n\n2,130.8 − 2,106.9 = 23.9 square kilometres\n\nThe combined area is larger.\n\nANSWER: yes | 23.9"
+      ],
+      "in": 10980,
+      "out": 370,
+      "sec": 7.7067507999017835,
+      "id": "Q-16",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "harrowfield",
+        887.276
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "harrowfield",
+          891.869
+        ],
+        [
+          "harrowfield",
+          891.0
+        ],
+        [
+          "harrowfield",
+          885.578
+        ],
+        [
+          "harrowfield",
+          887.276
+        ],
+        [
+          "harrowfield",
+          885.288
+        ]
+      ],
+      "texts": [
+        "Harrowfield’s households paid more per resident.\n\nCalculation:\n\n- Harrowfield water use per resident: \\(7{,}146{,}000 \\div 90{,}212 = 79.264\\) m³\n- Ossbridge water use per resident: \\(3{,}862{,}000 \\div 52{,}904 = 72.999\\) m³\n- Difference in use per resident: \\(79.264 - 72.999 = 6.265\\) m³\n- Difference in payment: \\(6.265 \\times 142.35 = 891.869\\) tenge per resident\n\nANSWER: Harrowfield | 891.869",
+        "Harrowfield used 7,146 megalitres and had 90,212 residents:\n\n- Water per resident = \\(7,146,000 \\div 90,212 = 79.236\\) cubic metres\n- Cost per resident = \\(79.236 \\times 142.35 = 11,277.2\\) tenge\n\nOssbridge used 3,862 megalitres and had 52,904 residents:\n\n- Water per resident = \\(3,862,000 \\div 52,904 = 72.953\\) cubic metres\n- Cost per resident = \\(72.953 \\times 142.35 = 10,386.2\\) tenge\n\nDifference: \\(11,277.2 - 10,386.2 = 891.0\\) tenge per resident.\n\nANSWER: Harrowfield | 891.000",
+        "Harrowfield’s households paid more per resident.\n\nCalculation:\n- Harrowfield water use: 7,146 ML = 7,146,000 m³\n- Ossbridge water use: 3,862 ML = 3,862,000 m³\n- Tariff: 142.35 tenge/m³\n\nHarrowfield:\n\\[\n\\frac{7,146,000 \\times 142.35}{90,212}=11,277.421\n\\]\ntenge per resident.\n\nOssbridge:\n\\[\n\\frac{3,862,000 \\times 142.35}{52,904}=10,391.843\n\\]\ntenge per resident.\n\nDifference:\n\\[\n11,277.421-10,391.843=885.578\n\\]\n\nANSWER: Harrowfield | 885.578",
+        "Harrowfield’s households paid more per resident.\n\nCalculation:\n\n- Harrowfield water use: \\(7{,}146 \\times 1{,}000 = 7{,}146{,}000\\) cubic metres\n- Ossbridge water use: \\(3{,}862 \\times 1{,}000 = 3{,}862{,}000\\) cubic metres\n- Tariff: 142.35 tenge per cubic metre\n\nHarrowfield:\n\\[\n\\frac{7{,}146{,}000 \\times 142.35}{90{,}212}=11{,}277.604\n\\]\ntenge per resident\n\nOssbridge:\n\\[\n\\frac{3{,}862{,}000 \\times 142.35}{52{,}904}=10{,}390.328\n\\]\ntenge per resident\n\nDifference:\n\\[\n11{,}277.604-10{,}390.328=887.276\n\\]\n\nANSWER: Harrowfield | 887.276",
+        "Harrowfield used 7,146 megalitres, or 7,146,000 cubic metres.\n\nCost per resident:\n\\[\n\\frac{7{,}146{,}000 \\times 142.35}{90{,}212}=11{,}277.800\n\\text{ tenge}\n\\]\n\nOssbridge used 3,862 megalitres, or 3,862,000 cubic metres.\n\nCost per resident:\n\\[\n\\frac{3{,}862{,}000 \\times 142.35}{52{,}904}=10{,}392.512\n\\text{ tenge}\n\\]\n\nDifference:\n\\[\n11{,}277.800-10{,}392.512=885.288\n\\]\n\nHarrowfield households paid more by 885.288 tenge per resident.\n\nANSWER: Harrowfield | 885.288"
+      ],
+      "in": 11040,
+      "out": 943,
+      "sec": 13.162922299932688,
+      "id": "Q-17",
+      "correct": false
+    },
+    {
+      "parsed": [
+        "yes",
+        40014.031
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "yes",
+          40013.252
+        ],
+        [
+          "yes",
+          40012.213
+        ],
+        [
+          "yes",
+          40014.409
+        ],
+        [
+          "yes",
+          40014.046
+        ],
+        [
+          "yes",
+          40014.031
+        ]
+      ],
+      "texts": [
+        "Millbrook’s population growth from 2020 to 2025 was:\n\n\\[\n\\frac{37,203-34,590}{34,590}\\times100\n=7.553\\%\n\\]\n\nApplying the same growth rate to the 2025 population:\n\n\\[\n37,203\\times\\frac{37,203}{34,590}=40,013.252\n\\]\n\nThe projected population is above 40,000.\n\nANSWER: yes | 40013.252",
+        "Millbrook’s population growth from 2020 to 2025 was:\n\n\\[\n\\frac{37,203-34,590}{34,590}\\times100\n=7.554\\%\n\\]\n\nApplying the same growth rate to the 2025 population:\n\n\\[\n37,203\\times\\frac{37,203}{34,590}=40,012.213\n\\]\n\nThe projected population is above 40,000, so **yes**, it will exceed 40,000 residents.\n\nANSWER: yes | 40012.213",
+        "Millbrook’s population increased from 34,590 to 37,203:\n\nGrowth factor = 37,203 ÷ 34,590 = 1.075571\n\nProjected 2030 population = 37,203 × 1.075571 = 40,014.409\n\nSince 40,014.409 exceeds 40,000, the answer is yes.\n\nANSWER: yes | 40014.409",
+        "Millbrook’s population growth from 2020 to 2025 was:\n\n\\[\n\\frac{37,203-34,590}{34,590}=\\frac{2,613}{34,590}\\approx 0.075542\n\\]\n\nApplying the same percentage growth to the 2025 population:\n\n\\[\n37,203 \\times (1+0.075542)\\approx 40,014.046\n\\]\n\nThis would exceed 40,000 residents.\n\nANSWER: yes | 40014.046",
+        "Millbrook’s population growth from 2020 to 2025 was:\n\n\\[\n\\frac{37,203-34,590}{34,590}\\times 100\n=7.553\\%\n\\]\n\nApplying the same growth rate to the 2025 population:\n\n\\[\n37,203\\times\\frac{37,203}{34,590}=40,014.031\n\\]\n\nThe projected population is about 40,014, so it would exceed 40,000.\n\nANSWER: yes | 40014.031"
+      ],
+      "in": 11095,
+      "out": 532,
+      "sec": 10.61161859985441,
+      "id": "Q-18",
+      "correct": false
+    },
+    {
+      "parsed": [
+        "lindenmoor",
+        0.035
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "lindenmoor",
+          0.035
+        ],
+        [
+          "lindenmoor",
+          0.035
+        ],
+        [
+          "lindenmoor",
+          0.035
+        ],
+        [
+          "lindenmoor",
+          0.034
+        ],
+        [
+          "lindenmoor",
+          0.035
+        ]
+      ],
+      "texts": [
+        "Road density = paved road length ÷ area.\n\n- Lindenmoor: 402.3 ÷ 1,015.7 = 0.396 km/km²\n- Redfen: 244.6 ÷ 677.1 = 0.361 km/km²\n\nDifference: 0.396 − 0.361 = 0.035 km/km².\n\nANSWER: Lindenmoor | 0.035",
+        "Road density = paved road length ÷ area.\n\n- Lindenmoor: 402.3 ÷ 1,015.7 = 0.396 km/km²\n- Redfen: 244.6 ÷ 677.1 = 0.361 km/km²\n- Difference: 0.396 − 0.361 = 0.035 km/km²\n\nLindenmoor has the denser paved road network.\n\nANSWER: Lindenmoor | 0.035",
+        "Road density = paved road length ÷ area.\n\n- Lindenmoor: 402.3 ÷ 1,015.7 = 0.396 km/km²\n- Redfen: 244.6 ÷ 677.1 = 0.361 km/km²\n- Difference: 0.396 − 0.361 = 0.035 km/km²\n\nLindenmoor has the denser paved road network.\n\nANSWER: Lindenmoor | 0.035",
+        "Road density = paved road length ÷ area.\n\n- Lindenmoor: 402.3 ÷ 1,015.7 = 0.396 km/km²\n- Redfen: 244.6 ÷ 677.1 = 0.361 km/km²\n\nDifference: 0.396 − 0.361 = 0.034 km/km².\n\nANSWER: Lindenmoor | 0.034",
+        "Road-network density = paved road length ÷ area.\n\n- Lindenmoor: \\(402.3 \\div 1,015.7 = 0.396\\) km/km²\n- Redfen: \\(244.6 \\div 677.1 = 0.361\\) km/km²\n- Difference: \\(0.396 - 0.361 = 0.035\\) km/km²\n\nANSWER: Lindenmoor | 0.035"
+      ],
+      "in": 10980,
+      "out": 482,
+      "sec": 8.454184700269252,
+      "id": "Q-19",
+      "correct": true
+    },
+    {
+      "parsed": [
+        "ashgrove",
+        2996.5
+      ],
+      "unanswered": false,
+      "votes": [
+        [
+          "ashgrove",
+          2999.8
+        ],
+        [
+          "ashgrove",
+          2996.5
+        ],
+        [
+          "ashgrove",
+          2994.2
+        ],
+        [
+          "ashgrove",
+          2995.593
+        ],
+        [
+          "ashgrove",
+          3005.838
+        ]
+      ],
+      "texts": [
+        "Calculate each 2025 budget per resident:\n\n- Ossbridge: \\(9,284.5\\text{ million} \\div 52,904 = 175,494.1\\) tenge per resident\n- Ashgrove: \\(10,488.1\\text{ million} \\div 58,760 = 178,493.9\\) tenge per resident\n- Harrowfield: \\(16,021.7\\text{ million} \\div 90,212 = 177,593.2\\) tenge per resident\n\nAshgrove had the largest budget per resident. It exceeded Ossbridge, the lowest, by:\n\n\\(178,493.9 - 175,494.1 = 2,999.8\\) tenge per resident.\n\nANSWER: Ashgrove | 2999.8",
+        "Calculate each district’s 2025 budget per resident:\n\n- Ossbridge: \\(9,284.5\\text{ million} \\div 52,904 = 175,493.6\\) tenge per resident\n- Ashgrove: \\(10,488.1\\text{ million} \\div 58,760 = 178,490.1\\) tenge per resident\n- Harrowfield: \\(16,021.7\\text{ million} \\div 90,212 = 177,605.4\\) tenge per resident\n\nAshgrove had the largest budget per resident. The lowest was Ossbridge.\n\nDifference: \\(178,490.1 - 175,493.6 = 2,996.5\\) tenge per resident.\n\nANSWER: Ashgrove | 2996.5",
+        "Calculate each district’s 2025 budget per resident:\n\n- Ossbridge: \\(9,284.5\\text{ million} \\div 52,904 = 175,497.6\\) tenge per resident\n- Ashgrove: \\(10,488.1\\text{ million} \\div 58,760 = 178,491.8\\) tenge per resident\n- Harrowfield: \\(16,021.7\\text{ million} \\div 90,212 = 177,589.2\\) tenge per resident\n\nAshgrove had the largest budget per resident. The difference from the lowest, Ossbridge, was:\n\n\\(178,491.8 - 175,497.6 = 2,994.2\\) tenge per resident\n\nANSWER: Ashgrove | 2994.2",
+        "Calculate each 2025 budget per resident:\n\n- Ossbridge: \\(9,284.5\\text{ million} \\div 52,904 = 175,491.643\\) tenge per resident\n- Ashgrove: \\(10,488.1\\text{ million} \\div 58,760 = 178,487.236\\) tenge per resident\n- Harrowfield: \\(16,021.7\\text{ million} \\div 90,212 = 177,594.378\\) tenge per resident\n\nAshgrove had the largest budget per resident. The difference from the lowest, Ossbridge, was:\n\n\\(178,487.236 - 175,491.643 = 2,995.593\\) tenge per resident.\n\nANSWER: Ashgrove | 2995.593",
+        "Calculate each district’s 2025 budget per resident:\n\n- Ossbridge: \\(9,284.5\\text{ million} \\div 52,904 = 175,487.865\\) tenge per resident\n- Ashgrove: \\(10,488.1\\text{ million} \\div 58,760 = 178,493.703\\) tenge per resident\n- Harrowfield: \\(16,021.7\\text{ million} \\div 90,212 = 177,587.018\\) tenge per resident\n\nAshgrove had the largest budget per resident. The difference from the lowest, Ossbridge, was:\n\n\\(178,493.703 - 175,487.865 = 3,005.838\\) tenge per resident.\n\nANSWER: Ashgrove | 3005.838"
+      ],
+      "in": 11045,
+      "out": 892,
+      "sec": 11.934256699867547,
+      "id": "Q-20",
+      "correct": false
+    }
+  ]
+}
