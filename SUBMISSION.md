@@ -12,25 +12,32 @@
 
 | # | Step | What goes in (types) | What comes out (types) | When it goes wrong | Tool, loop, or model? |
 |---|---|---|---|---|---|
-| 1 | Understand the question | Question (str)| District names, required fields, calculation goal (str, list[str])| If the question is unclear, request clarification or return unanswered| Model|
-| 2 | Request facts | District name and field (str, str) | Tool call arguments (dict) | If required information is missing, request another lookup | Model |
-| 3 | Look up current facts | District name and field (str, str) | Value, unit, document ID (dict) | Return an error for unknown or ambiguous names, missing fields, or invalid input | lookup tool |
-| 4 | Validate sources | Matching documents and correction notices (list[dict]) | Current verified facts (dict) | Ignore archived profiles; apply corrections; report unresolved conflicts | lookup tool |
-| 5 | Prepare calculations | Verified facts and units (dict) | Arithmetic expressions (str) | If units are incompatible or data is missing, do not calculate | Model |
-| 6 | Calculate values | Arithmetic expression (str) | Numeric result or error (dict) | Reject invalid expressions, division by zero, unsafe operations, and excessively large calculations | calculate tool |
-| 7 | Manage tool calls | Model tool calls and JSON arguments (list, str) | Tool results and updated conversation (list[dict]) | Return an error for malformed JSON; stop at the round limit | Loop |
-| 8 | Compare and answer | Verified facts and calculated values (dict) | Final answer (str) | If the result cannot be determined, mark the question unanswered | Model |
+| 1 | Understand the question | Question text (`str`) | District names (`list[str]`), required fields (`list[str]`), calculation goal (`str`) | If the question is unclear or the districts or fields cannot be identified, the model does not guess: it gives no ANSWER line and the question is marked unanswered (there is no human in the loop to ask for clarification) | Model |
+| 2 | Request facts | One district name and one field name (`str`, `str`) | Tool call arguments as a JSON string, for example `{"district":"Brightwater","field":"area_km2"}` (`str`) | If an argument is missing, has the wrong type or is not valid JSON, the loop (step 9) catches it before anything runs and returns an `invalid_arguments` error for that `tool_call_id`; the model can then correct the call | Model |
+| 3 | Find the district | District name (`str`) | District id such as `"brightwater"` (`str`) | Nothing found: error `district_not_found` with up to three "did you mean" suggestions. Two or more close matches (for example Ossbridge and Ossford): error `ambiguous_district` listing the candidates. The tool never picks one automatically | lookup tool |
+| 4 | Pick the current profile | District id (`str`) | The 2025 profile of that district (`dict` with `id`, `title`, `text`) | A profile whose title contains ARCHIVED (NR-13, NR-14) is never used. If a district has only an archived profile, the error is `no_current_profile`. If two current profiles are found, the error is `ambiguous_profile` | lookup tool |
+| 5 | Apply corrections | Profile (`dict`) and the list of correction notices from the corpus (`list[dict]`) | Profile with corrected figures and the id of the document that supplied the value (`dict`) | If a notice names a figure that cannot be found in the profile, the tool returns the profile value together with a `warning`. A correction always takes priority over the profile it corrects (NR-00): the result then names the notice (for example NR-16) as its source | lookup tool |
+| 6 | Extract the field and normalise the unit | Profile (`dict`) and field name (`str`) | Value (`float`), unit (`str`), source document id (`str`) | Unknown field: error `field_not_found`. Number cannot be read from the text: error `unreadable_value`. Unit not recognised: error `unknown_unit`. Water use in cubic metres (Lindenmoor, NR-08) is converted to megalitres by the tool (1 megalitre = 1,000 cubic metres) and the original figure is shown in a `note` | lookup tool |
+| 7 | Prepare calculations | Verified facts: values, units and sources (`list[dict]`) | Arithmetic expressions using only numbers and `+ - * / ( )` (`list[str]`) | If a needed fact is missing or an earlier lookup returned an error, the model does not invent a number and does not calculate; it repeats the lookup or ends as unanswered | Model |
+| 8 | Calculate values | Arithmetic expression (`str`) | `{"result": float}` or an error (`dict`) | Division by zero: `division_by_zero`. Invalid syntax: `invalid_expression`. Function calls, attributes, names or `**`: `unsafe_expression`. Longer than the length limit: `expression_too_long`. Result too large or not finite: `number_too_large` or `invalid_result`. Nothing is ever run with `eval` or `exec` | calculate tool |
+| 9 | Manage tool calls | The model's message with `tool_calls` (list) and each `arguments` string (`str`) | One `role: "tool"` message per `tool_call_id`, the updated conversation, and a log entry (`list[dict]`) | Malformed JSON, wrong argument names or an unknown tool name: an error message is still sent back for that `tool_call_id`. If the fixed round limit is reached, the loop stops and the question is marked unanswered | Loop |
+| 10 | Compare and answer | Verified facts and calculated values (`list[dict]`) | Final answer line `ANSWER: <name or yes/no> \| <number>` (`str`) | If a result cannot be determined, or the model's reply has no valid ANSWER line, the question is marked unanswered and no number is invented. Rounding happens only here, to the number of decimals the question asks for | Model |
 
 **How the steps connect:**
 
-<!-- which step feeds which: a list, an ASCII diagram, or an image committed to the repo -->
-1. The model reads the question and identifies the districts and required fields.
-2. The model requests the necessary facts using lookup.
-3. The loop validates the tool arguments, executes lookup, and returns the results.
-4. The lookup tool selects current documents, ignores archived profiles, and applies correction notices.
-5. The model prepares arithmetic expressions using the verified facts.
-6. The loop executes calculate and returns the numeric results.
-7. The model compares the results and produces the final answer.
+1. The model reads the question (step 1) and produces district names, fields and a calculation goal.
+2. For each fact it needs, the model writes a lookup request (step 2).
+3. The loop (step 9) parses the `arguments` string, validates it, and calls `lookup`. Inside `lookup` the data flows through steps 3 → 4 → 5 → 6: district name → district id → current profile → corrected profile → value, unit and source.
+4. The loop sends the lookup result back to the model as a tool message with the same `tool_call_id`.
+5. The model turns the verified facts into arithmetic expressions (step 7).
+6. The loop (step 9) validates the expression and calls `calculate` (step 8), then sends the numeric result back with the same `tool_call_id`.
+7. The model repeats steps 2 to 8 if it still needs facts or further calculations, up to the round limit.
+8. The model compares the results and writes the final answer (step 10).
+
+```
+1 → 2 → [9 Loop: parse + validate] → 3 → 4 → 5 → 6 → facts back to model
+      → 7 → [9 Loop: parse + validate] → 8 → numbers back to model → 10
+```
 
 The final answer must use this format:
 ANSWER: <name or yes/no> | <number>
@@ -38,28 +45,31 @@ ANSWER: <name or yes/no> | <number>
 **What I am assuming:**
 
 <!-- census year, archived profiles, corrections, units, where rounding happens, ... -->
-Population figures come from the 2025 census unless the question explicitly requests another year.
+Population figures come from the 2025 census unless the question explicitly requests another year. For growth questions the 2020 census figure is used as the starting point.
 Budgets and household water usage refer to 2025 unless otherwise specified.
 School enrollment figures refer to the 2025/26 academic year.
-Archived profiles NR-13 and NR-14 must not replace the current district profiles.
-Correction notice NR-16 takes priority over NR-05. Brightwater's correct area is 921.4 km².
-District names must match exactly, so Ossbridge and Ossford are treated as different districts.
-Units must be converted before calculations. One megalitre equals 1,000 cubic metres.
+The water tariff is the 2025 tariff of 142.35 tenge per cubic metre, the same in every district (NR-15).
+Archived profiles NR-13 and NR-14 must not replace the current district profiles. They are recognised by the word ARCHIVED in the title, never by guessing, and `lookup` never returns a value from them.
+Correction notice NR-16 takes priority over NR-05 (NR-00: corrections take precedence over the profile they correct). Brightwater's correct area is 921.4 km². `lookup` reads the notice from the corpus and returns the corrected value with NR-16 as its source.
+District names are matched exactly (ignoring upper and lower case), so Ossbridge and Ossford are treated as different districts. If a name is misspelled, `lookup` returns an error with suggestions and does not pick a district by itself.
+Units are converted by the `lookup` tool, not by the model. Water use is always returned in megalitres. One megalitre equals 1,000 cubic metres, so Lindenmoor's 2,151,400 cubic metres (NR-08) becomes 2,151.4 megalitres, and the original figure is shown in a note.
+For per-day calculations a year has 365 days (2025 is not a leap year), and one megalitre equals 1,000,000 litres.
 Intermediate calculations should keep full precision. Rounding happens only when producing the final answer, using the precision requested by the question.
 If a required fact is unavailable or an error cannot be resolved, the model should not invent a value.
+The assumption my solution is most sensitive to is that the correction notice NR-16 is applied. Without it, Brightwater's area would be 912.4 km² and Q-09 would give 0.1 residents per km² instead of 0.6.
 
 ### A2 — The two tools
 
 #### `lookup`
 
-The `lookup` tool retrieves a specific fact about a district from the Nine Rivers Region documents. It uses current 2025 profiles, ignores archived profiles, and applies correction notices. Every successful result includes the source document ID.
+The `lookup` tool retrieves a specific fact about a district from the Nine Rivers Region documents. It uses current 2025 profiles, ignores archived profiles, and applies correction notices. It also converts units (water use is always returned in megalitres). Every successful result includes the source document ID, and every error includes an error code and a short message that the model can read and act on.
 
 ```json
 {
   "type": "function",
   "function": {
     "name": "lookup",
-    "description": "Find a specific fact about a Nine Rivers Region district or the regional water tariff. Use exact district names. Return the value, unit, and source document ID. Prefer current 2025 data, ignore archived profiles, and apply correction notices. Call this tool before using numerical facts in calculations.",
+    "description": "Find one specific fact about a Nine Rivers Region district or the regional water tariff. Use exact district names; if a name is misspelled the tool returns suggestions and you must call it again with the correct name. Returns the value, its unit, and the source document ID. Only current 2025 profiles are used: archived profiles are ignored and correction notices are applied (the source then names the notice). Water use is always returned in megalitres. Call this tool to get every number before using it in a calculation; never guess a figure.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -69,7 +79,7 @@ The `lookup` tool retrieves a specific fact about a district from the Nine River
         },
         "field": {
           "type": "string",
-          "description": "Requested field, such as population_2025, population_2020, area_km2, budget_million_tenge, water_megalitres, schools, pupils, roads_km, founded_year, or water_tariff_2025."
+          "description": "Requested field: population_2025, population_2020, area_km2, budget_million_tenge, water_megalitres, schools, pupils, roads_km, founded_year, or water_tariff_2025."
         }
       },
       "required": ["district", "field"],
@@ -81,19 +91,23 @@ The `lookup` tool retrieves a specific fact about a district from the Nine River
 
 | Case | What the tool returns |
 |---|---|
-| Success | JSON containing `district`, `field`, `value`, `unit`, and `source` |
+| Success | JSON containing `district`, `field`, `value`, `unit`, and `source`, for example `{"district":"Brightwater","field":"area_km2","value":921.4,"unit":"km2","source":"NR-16"}` |
 | Unknown district | `{"error": "district_not_found", "message": "No matching district found"}` |
-| Misspelled district | An error with possible district-name suggestions, without automatically choosing one |
-| Ambiguous district | `{"error": "ambiguous_district", "message": "Multiple possible district matches"}` |
+| Misspelled district | `{"error": "district_not_found", "message": "No district named Ossbrige; did you mean Ossbridge or Ossford?"}`: suggestions are given, but the tool never chooses one automatically |
+| Ambiguous district | `{"error": "ambiguous_district", "message": "Multiple possible district matches", "candidates": [...]}` |
 | Unknown field | `{"error": "field_not_found", "message": "The requested field is unavailable"}` |
 | Archived profile | The current 2025 value is used instead of the archived value |
+| Only an archived profile exists | `{"error": "no_current_profile", "message": "Only an archived profile exists for this district"}` |
 | Corrected value | The corrected value is returned with the correction notice as its source |
+| Water use in cubic metres (Lindenmoor) | Value converted to megalitres, with a `note` giving the original figure |
+| Unreadable number | `{"error": "unreadable_value", "message": "The number could not be read from the profile"}` |
+| Unknown unit | `{"error": "unknown_unit", "message": "The unit in the profile is not recognised"}` |
 | Invalid arguments | `{"error": "invalid_arguments", "message": "District and field must be valid strings"}` |
 | Document loading failure | `{"error": "data_error", "message": "Unable to read the corpus"}` |
 
 **Worst thing it could do with strange or dangerous input:**
 
-The model could provide extremely long strings, unknown field names, or misleading district names. Without validation, the tool might return the wrong fact or process unnecessary data. I will restrict input lengths, validate the field names, and search only the local corpus. The tool will not execute user-provided commands or access arbitrary files.
+The model could provide extremely long strings, unknown field names, or misleading district names. Without validation, the tool might return the wrong fact or process unnecessary data. I will restrict input lengths, validate the field names against a fixed list, and search only the local corpus. The tool returns a single fact, never whole documents, and it reads only the one fixed corpus file, so it cannot be made to open arbitrary files or execute user-provided commands.
 
 #### `calculate`
 
@@ -104,7 +118,7 @@ The `calculate` tool evaluates arithmetic expressions safely. It supports additi
   "type": "function",
   "function": {
     "name": "calculate",
-    "description": "Safely calculate a numerical arithmetic expression using +, -, *, /, parentheses, and unary signs. Use this tool for population density, percentages, unit conversions, financial comparisons, and other arithmetic. Do not send Python code, variable names, or function calls. Return the calculated result or a clear error.",
+    "description": "Safely calculate a numerical arithmetic expression using +, -, *, /, parentheses, and unary signs. Use this tool for all arithmetic: population density, percentages, growth rates, per-resident and per-day figures, financial comparisons, and differences. Exponentiation (**) is not supported. Do not send Python code, variable names, or function calls; write plain numbers, using the exact values returned by lookup without rounding them first. Returns the result or a clear error.",
     "parameters": {
       "type": "object",
       "properties": {
@@ -122,19 +136,22 @@ The `calculate` tool evaluates arithmetic expressions safely. It supports additi
 
 | Case | What the tool returns |
 |---|---|
-| Success | `{"result": 48.48599956587801}` |
+| Success | `{"result": 48.486}` for `44675 / 921.4` (a full-precision float; shortened here because this is a hand calculation) |
 | Division by zero | `{"error": "division_by_zero", "message": "Cannot divide by zero"}` |
 | Invalid expression | `{"error": "invalid_expression", "message": "Invalid arithmetic expression"}` |
 | Python function call | `{"error": "unsafe_expression", "message": "Function calls are not allowed"}` |
 | Attribute access | `{"error": "unsafe_expression", "message": "Attribute access is not allowed"}` |
+| Variable or other names | `{"error": "unsafe_expression", "message": "Names are not allowed"}` |
+| Non-numeric constant (string, boolean, None) | `{"error": "invalid_expression", "message": "Only numbers are allowed"}` |
 | Exponentiation | `{"error": "unsafe_expression", "message": "Exponentiation is not allowed"}` |
 | Excessively long input | `{"error": "expression_too_long", "message": "Expression exceeds the length limit"}` |
 | Excessively large result | `{"error": "number_too_large", "message": "Result exceeds the allowed numeric range"}` |
 | Non-finite result | `{"error": "invalid_result", "message": "Result must be finite"}` |
+| Invalid arguments | `{"error": "invalid_arguments", "message": "Expression must be a non-empty string"}` |
 
 **Worst thing it could do with strange or dangerous input:**
 
-If arithmetic expressions were executed as Python code, the model could request file access, system commands, or expensive computations. I will parse expressions using `ast` and allow only numeric constants and approved arithmetic operators. Function calls, attributes, names, and exponentiation will be rejected. I will also limit expression length, AST complexity, and numeric magnitude to reduce the risk of excessive CPU or memory usage.
+If arithmetic expressions were executed as Python code, the model could request file access, system commands, or expensive computations. I will parse expressions using `ast` and allow only numeric constants and approved arithmetic operators. Function calls, attributes, names, and exponentiation will be rejected, so inputs like `__import__('os').system('echo hi')`, `(1).__class__` and `9**9**9` are refused without being run. I will also limit expression length, AST depth, and numeric magnitude to reduce the risk of excessive CPU or memory usage.
 
 ### A3 — Q-09 by hand
 
@@ -229,12 +246,12 @@ If arithmetic expressions were executed as Python code, the model could request 
   {
     "role": "tool",
     "tool_call_id": "call_05",
-    "content": "{\"result\":48.48599956587801}"
+    "content": "{\"result\":48.4859996}"
   },
   {
     "role": "tool",
     "tool_call_id": "call_06",
-    "content": "{\"result\":49.041655681518584}"
+    "content": "{\"result\":49.0416557}"
   },
   {
     "role": "assistant",
@@ -244,7 +261,7 @@ If arithmetic expressions were executed as Python code, the model could request 
         "type": "function",
         "function": {
           "name": "calculate",
-          "arguments": "{\"expression\":\"49.041655681518584 - 48.48599956587801\"}"
+          "arguments": "{\"expression\":\"49.0416557 - 48.4859996\"}"
         }
       }
     ]
@@ -252,7 +269,7 @@ If arithmetic expressions were executed as Python code, the model could request 
   {
     "role": "tool",
     "tool_call_id": "call_07",
-    "content": "{\"result\":0.5556561156405735}"
+    "content": "{\"result\":0.5556561}"
   },
   {
     "role": "assistant",
@@ -279,7 +296,7 @@ Millbrook:
 
 Difference:
 
-49.0416556815 - 48.4859995659 = 0.5556561156
+49.0417 - 48.4860 ≈ 0.5557
 
 Rounded to one decimal place: 0.6 residents/km².
 
@@ -287,7 +304,7 @@ Rounded to one decimal place: 0.6 residents/km².
 
 `ANSWER: Millbrook | 0.6`
 
-The correction notice NR-16 is essential. Without it, Brightwater's area would be incorrectly taken as 912.4 km², which could change the comparison result.
+The correction notice NR-16 matters. Without it, Brightwater's area would be taken as 912.4 km², its density would be about 48.964, and the difference from Millbrook would be about 0.077, which rounds to 0.1 instead of 0.6. The winner stays Millbrook, but the number is wrong.
 
 ### A4 — Why I split it this way
 
